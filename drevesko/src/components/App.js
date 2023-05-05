@@ -5,44 +5,11 @@ import DreveskoActionButton from './DreveskoActionButton';
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { sort } from "../actions";
 import styled from 'styled-components';
-
+import './App.css';
 const ListContainer = styled.div`
   display: flex;
   flex-direction: row;
 `
-
-const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #555;
-  padding: 10px;
-  border: 1px solid #444;
-  border-radius: 5px;
-  margin-bottom: 10px;
-`
-const HomeButton = styled.button`
-  background-color: lightgray;
-  border: none;
-  padding: 10px;
-  margin-right: 5px;
-  transition: background-color 0.2s ease-in-out;
-
-  &:hover {
-    background-color: darkgray;
-  }
-`;
-
-const MenuButton = styled.button`
-  background-color: lightgray;
-  border: none;
-  padding: 10px;
-  transition: background-color 0.2s ease-in-out;
-
-  &:hover {
-    background-color: darkgray;
-  }
-`;
 
 class App extends Component {
   
@@ -68,13 +35,16 @@ class App extends Component {
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
         <div className="App">
-          <Header>
-            <div>
-              <HomeButton>Home</HomeButton>
-              <MenuButton>Menu</MenuButton>
-            </div>
-            <div style={{color: 'white'}}>Username</div>
-          </Header>
+        <div class="container">
+        <nav class="navbar">
+          <ul class="nav--list">
+            <li class="item"><a href="da.com">Home</a></li>
+            <li class="item"><a href="da.com">About</a></li>
+            <li class="item"><a href="da.com">Blog</a></li>
+            <li class="item"><a href="da.com">Contact</a></li>
+          </ul>
+        </nav>
+        </div>
           <Droppable droppableId='full-site' direction="horizontal" type="list" >
             {provided =>(
               <ListContainer {...provided.droppableProps} ref={provided.innerRef}>

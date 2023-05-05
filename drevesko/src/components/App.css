@@ -7,7 +7,7 @@
 }
 
 .container {
-    margin-bottom: 10px;
+    margin-bottom: 40px;
     
     display: flex;
     width: 100%;
@@ -21,7 +21,7 @@ nav {
   height: 80px;
   width: 100%;
   
-  background: #989999;
+  background: #eceeee;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 15px 20px -5px;
 }
 
@@ -62,7 +62,7 @@ nav {
 }
 
 .item:hover a {
-  color: #b0b5b6;
+  color: #f7f9fa;
 }
 
 .item:before {
@@ -71,7 +71,7 @@ nav {
   width: 0%;
   height: 100%;
   transform: skew(30deg);
-  background: #7c7c7a;
+  background: #c7c7c6dc;
   transition: width 400ms ease;
 }
 

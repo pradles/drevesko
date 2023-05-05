@@ -7,32 +7,40 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Draggable } from "react-beautiful-dnd";
 import styled from 'styled-components';
+import DreveskoEditButton from "./DreveskoEditButton";
 
 
 const CardContainer = styled.div`
-    margin-bottom: 8px;
-    padding: 0px;
-`
+  margin-bottom: 8px;
+  padding: 0px;
+  position: relative;
+  &:hover {
+    button {
+      visibility: visible;
+    }
+  }
+`;
 
-const DreveskoCard = ({text, id, index}) =>{
-    return(
-        <Draggable draggableId={String(id)} index={index} >
-            {provided =>(
-                <CardContainer ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                    <Card>
-                        <CardContent>
-                            <Typography>
-                                {text}
-                            </Typography>
-                            <Typography>
-                                opis
-                            </Typography>
-                        </CardContent>
-                    </Card>     
-                </CardContainer>
-            )}
-        </Draggable>
-    )
+const DreveskoCard = ({text_opis, text, id, index}) =>{
+  return(
+    <Draggable draggableId={String(id)} index={index} >
+      {provided =>(
+        <CardContainer ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+          <Card>
+            <CardContent>
+              <Typography>
+                {text}
+              </Typography>
+              <Typography>
+                {text_opis}
+              </Typography>
+              <DreveskoEditButton /> 
+            </CardContent>
+          </Card>    
+        </CardContainer>
+      )}
+    </Draggable>
+  )
 }
 
 

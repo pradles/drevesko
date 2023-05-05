@@ -10,11 +10,13 @@ const initialState = [
         cards: [
             {
                 id: `card-${0}`,
-                text: "tle je tekst"
+                text: "tle je tekst",
+                text_opis: "opis"
             },
             {
                 id: `card-${1}`,
-                text: "tle je tekst2"
+                text: "tle je tekst2",
+                text_opis: "opis2"
             }
         ]
     },
@@ -24,15 +26,18 @@ const initialState = [
         cards: [
             {
                 id: `card-${2}`,
-                text: "tle je tekst3"
+                text: "tle je tekst3",
+                text_opis: "opis3"
             },
             {
                 id: `card-${3}`,
-                text: "tle je tekst4"
+                text: "tle je tekst4",
+                text_opis: "opis4"
             },
             {
                 id: `card-${4}`,
-                text: "tle je tekst5"
+                text: "tle je tekst5",
+                text_opis: "opis5"
             },
         ]
     }
@@ -42,7 +47,7 @@ const initialState = [
 
 const listReducer = (state = initialState, action) => {
     switch (action.type){
-        case CONSTANTS.ADD_LIST:
+        case CONSTANTS.ADD_LIST:{
             const newList = {
                 title: action.payload,
                 cards: [],
@@ -50,10 +55,39 @@ const listReducer = (state = initialState, action) => {
             }
             listId += 1;
             return [...state, newList];
+        }
+
+        case CONSTANTS.EDIT_CARD: {
+            const { id, listId, newText, newTextOpis } = action.payload;
+            const newState = state.map((list) => {
+              if (list.id === listId) {
+                const updatedCards = list.cards.map((card) => {
+                  if (card.id === id) {
+                    return {
+                      ...card,
+                      text: newText,
+                      text_opis: newTextOpis,
+                    };
+                  } else {
+                    return card;
+                  }
+                });
+                return {
+                  ...list,
+                  cards: updatedCards,
+                };
+              } else {
+                return list;
+              }
+            });
+            return newState;
+          }
+          
 
         case CONSTANTS.ADD_CARD:
             const newCard = {
                 text: action.payload.text,
+                text_opis: action.payload.text_opis,
                 id: `card-${cardId}`
             }
             cardId += 1;

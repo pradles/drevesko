@@ -10,7 +10,8 @@ class DreveskoActionButton extends React.Component{
 
     state = {
         formOpen: false,
-        text: ""
+        text: "",
+        text_opis: ""
     };
 
     openForm = () => {
@@ -21,8 +22,16 @@ class DreveskoActionButton extends React.Component{
 
     closeForm = e => {
         this.setState({
-            formOpen: false
+            formOpen: false,
+            text: "",
+            text_opis: ""
         })
+    }
+
+    handleBlur = ({ currentTarget, relatedTarget }) => {
+        if (currentTarget.contains(relatedTarget)) return;
+        this.closeForm();
+        return;
     }
 
     handleInputChange = e =>{
@@ -30,6 +39,13 @@ class DreveskoActionButton extends React.Component{
             text: e.target.value
         })
     }
+
+    handleInputChangeOpis = e =>{
+        this.setState({
+            text_opis: e.target.value
+        })
+    }
+
 
     handleAddList = () => {
         const { dispatch } = this.props;
@@ -46,13 +62,14 @@ class DreveskoActionButton extends React.Component{
 
     handleAddCard = () => {
         const { dispatch, listId } = this.props;
-        const { text } = this.state;
+        const { text, text_opis } = this.state;
 
         if(text) {
             this.setState({
-                text: ""
+                text: "",
+                text_opis: ""
             })
-            dispatch(addCard(listId, text));
+            dispatch(addCard(listId, text, text_opis));
         }
         return;
     }
@@ -66,7 +83,7 @@ class DreveskoActionButton extends React.Component{
         const buttonTextBackground = list ? "rgba(0,0,0,.15)" : "inherit";
 
         return(
-            <div onClick={this.openForm}
+            <div id="add" onClick={this.openForm}
             style={{
                 ...styles.buttonContainer,
                 opacity: buttonTextOpacity,
@@ -83,30 +100,51 @@ class DreveskoActionButton extends React.Component{
         const { list } = this.props;
         const placeholder = list ? "Enter list title..." : "Enter title for this card...";
         const buttonTitle = list ? "Add list" : "Add card";
+        const opisInput = list ? "none" : "block";
 
         return (
             <div>
-                <Card style={{
+            <Card
+                onBlur={this.handleBlur}
+                style={{
                     overflow: "visible",
                     minHeight: 80,
                     minWidth: 272,
-                    padding: "6px 8px 2px"
-                }}>
-                <Textarea  
+                    padding: "6px 8px 2px",
+                }}
+                >
+                <Textarea
+                    id="title"
                     placeholder={placeholder}
                     autoFocus
-                    onBlur={this.closeForm}
-                    value={this.state.text}       
-                    onChange={this.handleInputChange}      
+                    
+                    value={this.state.text}
+                    onChange={this.handleInputChange}
                     style={{
                         overflow: "hidden",
                         resize: "none",
                         width: "100%",
                         outline: "none",
-                        border: "none"
-                    }} 
+                        border: "none",
+                    }}
                 />
-                </Card>
+
+                <Textarea
+                    id="opis"
+                    placeholder={"Vnesi opis..."}
+                    autoFocus
+                    value={this.state.text_opis}
+                    onChange={this.handleInputChangeOpis}
+                    style={{
+                        display: list ? 'none' : 'block',
+                        overflow: "hidden",
+                        resize: "none",
+                        width: "100%",
+                        outline: "none",
+                        border: "none",
+                    }}
+                />
+            </Card>
                 <div style={styles.formButtonGroup}>
                     <Button 
                         onMouseDown={ list ? this.handleAddList: this.handleAddCard}
@@ -114,7 +152,7 @@ class DreveskoActionButton extends React.Component{
                         style={{color: "white", backgroundColor: "#5aac44"}}>
                     {buttonTitle}</Button>
 
-                    <IconClose style={{marginLeft: 8, cursor: "pointer"}} />
+                    <IconClose onMouseDown={this.closeForm} style={{marginLeft: 8, cursor: "pointer"}} />
                 </div>
             </div>
         );

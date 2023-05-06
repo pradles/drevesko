@@ -58,30 +58,33 @@ const listReducer = (state = initialState, action) => {
         }
 
         case CONSTANTS.EDIT_CARD: {
-            const { id, listId, newText, newTextOpis } = action.payload;
-            const newState = state.map((list) => {
-              if (list.id === listId) {
-                const updatedCards = list.cards.map((card) => {
-                  if (card.id === id) {
+            const { text_opis, text, cardId, listId } = action.payload;
+            console.log("EDIT_CARD reducer called with:", action.payload);
+        
+            const newState = state.map(list => {
+                if (list.id === listId) {
+                    const updatedCards = list.cards.map(card => {
+                        if (card.id === cardId) {
+                            return {
+                                ...card,
+                                text,
+                                text_opis,
+                            };
+                        }
+                        return card;
+                    });
                     return {
-                      ...card,
-                      text: newText,
-                      text_opis: newTextOpis,
+                        ...list,
+                        cards: updatedCards,
                     };
-                  } else {
-                    return card;
-                  }
-                });
-                return {
-                  ...list,
-                  cards: updatedCards,
-                };
-              } else {
+                }
                 return list;
-              }
             });
+        
             return newState;
-          }
+        }
+        
+          
           
 
         case CONSTANTS.ADD_CARD:

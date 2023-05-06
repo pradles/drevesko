@@ -21,9 +21,9 @@ const CardContainer = styled.div`
   }
 `;
 
-const DreveskoCard = ({text_opis, text, id, index}) =>{
+const DreveskoCard = ({text_opis, text, cardId, index, listId}) =>{
   return(
-    <Draggable draggableId={String(id)} index={index} >
+    <Draggable draggableId={String(cardId)} index={index} >
       {provided =>(
         <CardContainer ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
           <Card>
@@ -34,7 +34,7 @@ const DreveskoCard = ({text_opis, text, id, index}) =>{
               <Typography>
                 {text_opis}
               </Typography>
-              <DreveskoEditButton /> 
+              <DreveskoEditButton cardId={cardId} listId={listId} /> 
             </CardContent>
           </Card>    
         </CardContainer>

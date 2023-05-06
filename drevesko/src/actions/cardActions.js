@@ -7,9 +7,9 @@ export const addCard = (listId, text, text_opis) => {
     };
 };
 
-export const editCard = (listId, text, text_opis) => {
+export const editCard = (cardId, text, text_opis, listId) => {
     return {
         type: CONSTANTS.EDIT_CARD,
-        payload: { text_opis, text, listId }
+        payload: { text_opis, text, cardId, listId }
     };
 };

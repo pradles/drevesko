@@ -46,16 +46,15 @@ class DreveskoEditButton extends React.Component {
 
   //editcard
   handleEditCard = () => {
-    const { dispatch, cardId } = this.props;
+    const { dispatch, cardId, listId } = this.props;
     const { text, text_opis } = this.state;
-
-    if (text) {
-      this.setState({
+    this.setState({
         text: "",
         text_opis: "",
-      });
-      dispatch(editCard(cardId, text, text_opis));
-    }
+    });
+    console.log(cardId, text, text_opis, listId)
+    dispatch(editCard(cardId, text, text_opis, listId));
+
     return;
   };
 

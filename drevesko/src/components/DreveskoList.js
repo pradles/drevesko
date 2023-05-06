@@ -22,7 +22,7 @@ const DreveskoList = ({title, cards, listId, index}) => {
                         {(provided) =>(
                             <div {...provided.droppableProps} ref={provided.innerRef}>
                             <h4>{title}</h4>
-                            { cards.map((card, index) => <DreveskoCard key={card.id} index={index} text_opis={card.text_opis} text={card.text} id={card.id} />) }
+                            { cards.map((card, index) => <DreveskoCard key={card.id} index={index} text_opis={card.text_opis} text={card.text} cardId={card.id} listId={listId} />) }
                             {provided.placeholder}
                             <DreveskoActionButton listId={listId} />
                             </div>

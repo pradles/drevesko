@@ -8,8 +8,8 @@ import { editCard } from "../actions";
 class DreveskoEditButton extends React.Component {
   state = {
     formOpen: false,
-    text: "",
-    text_opis: "",
+    text: this.props.text,
+    text_opis: this.props.text_opis,
   };
 
   openForm = () => {
@@ -21,8 +21,8 @@ class DreveskoEditButton extends React.Component {
   closeForm = (e) => {
     this.setState({
       formOpen: false,
-      text: "",
-      text_opis: "",
+      text: this.props.text,
+      text_opis: this.props.text_opis,
     });
   };
 
@@ -48,26 +48,30 @@ class DreveskoEditButton extends React.Component {
   handleEditCard = () => {
     const { dispatch, cardId, listId } = this.props;
     const { text, text_opis } = this.state;
-    this.setState({
-        text: "",
-        text_opis: "",
-    });
-    console.log(cardId, text, text_opis, listId)
-    dispatch(editCard(cardId, text, text_opis, listId));
+
+    // Only update text if it is truthy
+    const updatedText = text ? text : this.props.text;
+
+    // Only update text_opis if it is truthy
+    const updatedTextOpis = text_opis ? text_opis : this.props.text_opis;
+
+    console.log(cardId, updatedText, updatedTextOpis, listId);
+
+    dispatch(editCard(cardId, updatedText, updatedTextOpis, listId));
 
     return;
-  };
+};
+
 
   //editbutton
   renderEditButton = () => {
     return (
       <div
-        id="edit"
         onClick={this.openForm}
         style={{
           position: "absolute",
-          top: 0,
-          right: 0,
+          top: 6,
+          right: 6,
           cursor: "pointer",
           
         }}
@@ -78,7 +82,7 @@ class DreveskoEditButton extends React.Component {
   };
 
   renderForm = () => {
-    const { cardText, cardOpis } = this.props;
+    const { text, text_opis } = this.props;
 
     return (
       <div>
@@ -97,9 +101,9 @@ class DreveskoEditButton extends React.Component {
             </Typography>
             <Textarea
               id="title"
-              placeholder={cardText}
+              placeholder={text}
               autoFocus
-              value={this.state.text || cardText}
+              value={this.state.text || text}
               onChange={this.handleInputChange}
               style={{
                 overflow: "hidden",
@@ -115,9 +119,9 @@ class DreveskoEditButton extends React.Component {
             </Typography>
             <Textarea
               id="opis"
-              placeholder={cardOpis}
+              placeholder={text_opis}
               autoFocus
-              value={this.state.text_opis || cardOpis}
+              value={this.state.text_opis || text_opis}
               onChange={this.handleInputChangeOpis}
               style={{
                 overflow: "hidden",

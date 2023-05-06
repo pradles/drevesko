@@ -34,7 +34,7 @@ const DreveskoCard = ({text_opis, text, cardId, index, listId}) =>{
               <Typography>
                 {text_opis}
               </Typography>
-              <DreveskoEditButton cardId={cardId} listId={listId} /> 
+              <DreveskoEditButton cardId={cardId} listId={listId} text={text} text_opis={text_opis} /> 
             </CardContent>
           </Card>    
         </CardContainer>

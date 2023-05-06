@@ -84,7 +84,20 @@ const listReducer = (state = initialState, action) => {
             return newState;
         }
         
-          
+        case CONSTANTS.KILL_CARD:{
+            const { listId, cardId } = action.payload;
+            console.log("KILL_CARD reducer called with:", action.payload);
+
+            const updatedLists = state.map(list => {
+              if (list.id === listId) {
+                const updatedCards = list.cards.filter(card => card.id !== cardId);
+                return { ...list, cards: updatedCards };
+              }
+              return list;
+            });
+
+            return updatedLists;
+        }
           
 
         case CONSTANTS.ADD_CARD:

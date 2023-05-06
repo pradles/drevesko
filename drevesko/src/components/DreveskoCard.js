@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import { Draggable } from "react-beautiful-dnd";
 import styled from 'styled-components';
 import DreveskoEditButton from "./DreveskoEditButton";
+import DreveskoDeleteButton from "./DreveskoDeleteButton";
 
 
 const CardContainer = styled.div`
@@ -35,6 +36,7 @@ const DreveskoCard = ({text_opis, text, cardId, index, listId}) =>{
                 {text_opis}
               </Typography>
               <DreveskoEditButton cardId={cardId} listId={listId} text={text} text_opis={text_opis} /> 
+              <DreveskoDeleteButton cardId={cardId} listId={listId}/>
             </CardContent>
           </Card>    
         </CardContainer>

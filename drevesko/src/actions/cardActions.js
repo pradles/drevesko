@@ -13,3 +13,11 @@ export const editCard = (cardId, text, text_opis, listId) => {
         payload: { text_opis, text, cardId, listId }
     };
 };
+
+export const deleteCard = (listId, cardId) => {
+    return {
+      type: CONSTANTS.KILL_CARD,
+      payload: { listId, cardId }
+
+    }
+  }

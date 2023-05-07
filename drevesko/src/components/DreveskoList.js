@@ -3,14 +3,17 @@ import DreveskoCard from "./DreveskoCard";
 import DreveskoActionButton from "./DreveskoActionButton";
 import { Draggable, Droppable } from "react-beautiful-dnd";
 import styled from 'styled-components';
-
+import './App.css';
 const ListContainer = styled.div`
-    background-color: #dfe3e6;
-    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 0.8);;
+    
     width: 300px;
     padding: 8px;
-    margin-right: 10px;
+    margin-right: 6px;
     height: 100%;
+    margin-left: 10px;
+    padding: 5px;
+    border-radius: 5px;
 `
 
 const DreveskoList = ({title, cards, listId, index}) => {

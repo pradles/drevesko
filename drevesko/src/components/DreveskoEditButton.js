@@ -93,6 +93,7 @@ class DreveskoEditButton extends React.Component {
             minHeight: 80,
             minWidth: 272,
             padding: "6px 8px 2px",
+            marginLeft: "-10px"
           }}
         >
           <CardContent>

@@ -17,7 +17,7 @@ class DreveskoDeleteButton extends React.Component {
         onClick={this.handleDeleteCard}
         style={{
           position: "absolute",
-          top: 55,
+          bottom: 6,
           right: 6,
           cursor: "pointer",
         }}

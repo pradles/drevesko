@@ -1,48 +1,35 @@
 import { CONSTANTS } from "../actions";
+import initialStateData from "../data/initialState.json";
+//import fs from 'fs';
 
-let listId = 2;
-let cardId = 5;
 
-const initialState = [
-    {
-        title: "Prvi",
-        id: `list-${0}`,
+//console.log(initialStateData)
+
+let listId = initialStateData.length;
+let cardId = initialStateData.reduce((maxId, list) => {
+    return Math.max(maxId, list.cards.reduce((maxCardId, card) => {
+        return Math.max(maxCardId, parseInt(card.id.split("-")[1]));
+    }, 0));
+}, 0) + 1;
+
+//console.log("length list",listId)
+//console.log("length card",cardId)
+
+const initialState = listId > 0
+  ? initialStateData
+  : [
+      {
+        title: "List 1",
+        id: `list-${listId}`,
         cards: [
-            {
-                id: `card-${0}`,
-                text: "tle je tekst",
-                text_opis: "opis"
-            },
-            {
-                id: `card-${1}`,
-                text: "tle je tekst2",
-                text_opis: "opis2"
-            }
-        ]
-    },
-    {
-        title: "Drugi",
-        id: `list-${1}`,
-        cards: [
-            {
-                id: `card-${2}`,
-                text: "tle je tekst3",
-                text_opis: "opis3"
-            },
-            {
-                id: `card-${3}`,
-                text: "tle je tekst4",
-                text_opis: "opis4"
-            },
-            {
-                id: `card-${4}`,
-                text: "tle je tekst5",
-                text_opis: "opis5"
-            },
-        ]
-    }
-]
-
+          {
+            id: `card-${cardId}`,
+            text: "Card 1",
+            text_opis: "",
+          },
+        ],
+      },
+    ];
 
 
 const listReducer = (state = initialState, action) => {
@@ -54,7 +41,12 @@ const listReducer = (state = initialState, action) => {
                 id: `list-${listId}`
             }
             listId += 1;
-            return [...state, newList];
+            const newState = [...state, newList];
+            
+            //fs.writeFileSync('../data/initialState.json', JSON.stringify(newState));
+
+            //localStorage.setItem("state.json", JSON.stringify(newState));
+            return newState;
         }
 
         case CONSTANTS.EDIT_CARD: {
@@ -80,7 +72,7 @@ const listReducer = (state = initialState, action) => {
                 }
                 return list;
             });
-        
+
             return newState;
         }
         
@@ -88,7 +80,7 @@ const listReducer = (state = initialState, action) => {
             const { listId, cardId } = action.payload;
             console.log("KILL_CARD reducer called with:", action.payload);
 
-            const updatedLists = state.map(list => {
+            const newState = state.map(list => {
               if (list.id === listId) {
                 const updatedCards = list.cards.filter(card => card.id !== cardId);
                 return { ...list, cards: updatedCards };
@@ -96,11 +88,11 @@ const listReducer = (state = initialState, action) => {
               return list;
             });
 
-            return updatedLists;
+            return newState;
         }
           
 
-        case CONSTANTS.ADD_CARD:
+        case CONSTANTS.ADD_CARD:{
             const newCard = {
                 text: action.payload.text,
                 text_opis: action.payload.text_opis,
@@ -119,7 +111,8 @@ const listReducer = (state = initialState, action) => {
                 }
             })
             return newState;
-        
+        }
+
         case CONSTANTS.DRAG_HAPPENED:{
             const {
                 droppableIdStart,

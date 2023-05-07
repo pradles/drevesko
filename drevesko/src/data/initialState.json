@@ -1,0 +1,39 @@
+[
+    {
+        "title": "Prvi",
+        "id": "list-0",
+        "cards": [
+            {
+                "id": "card-0",
+                "text": "tle je tekst",
+                "text_opis": "opis"
+            },
+            {
+                "id": "card-1",
+                "text": "tle je tekst2",
+                "text_opis": "opis2"
+            }
+        ]
+    },
+    {
+        "title": "Drugi",
+        "id": "list-1",
+        "cards": [
+            {
+                "id": "card-2",
+                "text": "tle je tekst3",
+                "text_opis": "opis3"
+            },
+            {
+                "id": "card-3",
+                "text": "tle je tekst4",
+                "text_opis": "opis4"
+            },
+            {
+                "id": "card-4",
+                "text": "tle je tekst5",
+                "text_opis": "opis5"
+            }
+        ]
+    }
+]

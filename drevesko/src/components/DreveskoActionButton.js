@@ -63,7 +63,7 @@ class DreveskoActionButton extends React.Component{
     handleAddCard = () => {
         const { dispatch, listId } = this.props;
         const { text, text_opis } = this.state;
-
+        
         if(text) {
             this.setState({
                 text: "",

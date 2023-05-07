@@ -10,17 +10,20 @@ import styled from 'styled-components';
 import DreveskoEditButton from "./DreveskoEditButton";
 import DreveskoDeleteButton from "./DreveskoDeleteButton";
 
-
 const CardContainer = styled.div`
   margin-bottom: 8px;
   padding: 0px;
   position: relative;
-  &:hover {
-    button {
-      visibility: visible;
-    }
+
+  &:hover .buttons {
+    visibility: visible;
+  }
+
+  .buttons {
+    visibility: hidden;
   }
 `;
+
 
 const DreveskoCard = ({text_opis, text, cardId, index, listId}) =>{
   return(
@@ -30,13 +33,16 @@ const DreveskoCard = ({text_opis, text, cardId, index, listId}) =>{
           <Card>
             <CardContent>
               <Typography>
-                {text}
+                <b>{text}</b>
+                <hr></hr>
               </Typography>
               <Typography>
                 {text_opis}
               </Typography>
-              <DreveskoEditButton cardId={cardId} listId={listId} text={text} text_opis={text_opis} /> 
-              <DreveskoDeleteButton cardId={cardId} listId={listId}/>
+                <DreveskoEditButton cardId={cardId} listId={listId} text={text} text_opis={text_opis} /> 
+              <div className="buttons">
+                <DreveskoDeleteButton cardId={cardId} listId={listId}/>
+              </div>
             </CardContent>
           </Card>    
         </CardContainer>

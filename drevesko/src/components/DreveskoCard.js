@@ -30,7 +30,7 @@ const DreveskoCard = ({text_opis, text, cardId, index, listId}) =>{
     <Draggable draggableId={String(cardId)} index={index} >
       {provided =>(
         <CardContainer ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-          <Card sx={{ background: 'linear-gradient(to bottom, orange, orange)' }}>
+          <Card sx={{ background: 'rgba(255, 255, 255, 0.8);' }}>
             <CardContent>
               <Typography>
                 <b>{text}</b>

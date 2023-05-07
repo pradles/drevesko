@@ -7,7 +7,7 @@
 }
 
 body {
-  background: linear-gradient(to right, orange, red);
+  background: linear-gradient(to right, #fac086, #fa5656);
 }
 
 .container {
@@ -23,7 +23,7 @@ nav {
   padding: 2px 5px;
   height: 80px;
   width: 100%;
-  background-color: rgba(238, 237, 236, 0.3);
+  background-color: rgba(238, 237, 236, 0.795);
   box-shadow: rgba(0, 0, 0, 0.25) 0px 15px 20px -5px;
 }
 

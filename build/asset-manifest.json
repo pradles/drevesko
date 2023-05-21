@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/github.si/drevesko/static/css/main.903b8a3c.css",
+    "main.js": "/github.si/drevesko/static/js/main.084c5bed.js",
+    "static/js/512.ad1397ee.chunk.js": "/github.si/drevesko/static/js/512.ad1397ee.chunk.js",
+    "index.html": "/github.si/drevesko/index.html",
+    "main.903b8a3c.css.map": "/github.si/drevesko/static/css/main.903b8a3c.css.map",
+    "main.084c5bed.js.map": "/github.si/drevesko/static/js/main.084c5bed.js.map",
+    "512.ad1397ee.chunk.js.map": "/github.si/drevesko/static/js/512.ad1397ee.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.903b8a3c.css",
+    "static/js/main.084c5bed.js"
+  ]
+}

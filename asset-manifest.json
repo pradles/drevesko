@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/github.io/drevesko/static/css/main.903b8a3c.css",
-    "main.js": "/github.io/drevesko/static/js/main.66a8e096.js",
-    "static/js/787.c5da75cc.chunk.js": "/github.io/drevesko/static/js/787.c5da75cc.chunk.js",
-    "index.html": "/github.io/drevesko/index.html",
-    "main.903b8a3c.css.map": "/github.io/drevesko/static/css/main.903b8a3c.css.map",
-    "main.66a8e096.js.map": "/github.io/drevesko/static/js/main.66a8e096.js.map",
-    "787.c5da75cc.chunk.js.map": "/github.io/drevesko/static/js/787.c5da75cc.chunk.js.map"
+    "main.css": "/drevesko/static/css/main.903b8a3c.css",
+    "main.js": "/drevesko/static/js/main.5c0d0d16.js",
+    "static/js/787.c5da75cc.chunk.js": "/drevesko/static/js/787.c5da75cc.chunk.js",
+    "index.html": "/drevesko/index.html",
+    "main.903b8a3c.css.map": "/drevesko/static/css/main.903b8a3c.css.map",
+    "main.5c0d0d16.js.map": "/drevesko/static/js/main.5c0d0d16.js.map",
+    "787.c5da75cc.chunk.js.map": "/drevesko/static/js/787.c5da75cc.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.903b8a3c.css",
-    "static/js/main.66a8e096.js"
+    "static/js/main.5c0d0d16.js"
   ]
 }
